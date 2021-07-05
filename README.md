@@ -12,7 +12,7 @@ I also use Quows SQL database to initally load in information about rooms and in
 
 Also credit to Oki as I'm using [Oki's TinTin++ Mud Client scripts](https://fossil.tubul.net/tt_dw/doc/trunk/README.md).
 
-This is mostly a personal project for me but if anyone else wants to try to use it feel free.
+This is mostly a personal project but if anyone else wants to try to use it feel free.
 When I consider the map feature complete I'll start trying to make it more user friendly to download/install and see if I can make it useful to more MUD clients or other use cases.
 
 # Usage
