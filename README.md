@@ -61,6 +61,8 @@ Binds f11 and f12 to start/stop following your position.
 
   
 These scripts arn't the best but serve as a starting point to get a mostly functional map.
+The map is defaulty Always on top, so you can position it above your client.
+![tintin++ Client with DiscworldMudMap on top](https://i.imgur.com/1yithYV.png)
    
 # Installation / Compilation
 Right now the Makefile is setup so that you can compile on Linux using make and run the resulting binary in build/minimap.
