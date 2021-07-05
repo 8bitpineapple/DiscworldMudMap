@@ -36,7 +36,7 @@ Start sending all user inputs to minimap
 ``` 
 #EVENT {SEND OUTPUT} {#minimap %0};
 ```
-Teleport the minimap to look at <room id>
+Teleport the minimap to look at \<room id>
 ``` 
 #minimap <room id>
 ```
