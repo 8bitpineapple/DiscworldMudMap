@@ -1,2 +1,2 @@
 #!/bin/bash
-make && ./build/minimap
+make && (cd build; ./minimap)
