@@ -275,6 +275,11 @@ std::string MiniMap::GetExitID(std::string roomId, std::string input)
     return "";
 }
 
+std::string MiniMap::GetCurrentRoomId()
+{
+    return currRoomId;
+}
+
 //*******************************************
 //*****************Deconstructor*************
 MiniMap::~MiniMap()

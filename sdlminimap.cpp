@@ -169,10 +169,10 @@ void SdlMiniMap::CenterPlayer()
         playerSize.x = (currGeoMap->tileSize.y/14)*6;
 
         //If Scaling makes it less than 3 pix, just make it 3 pix --- so it's easier to see
-        if(playerSize.y < 1)
-            playerSize.y = 1;
-        if(playerSize.x < 1)
-            playerSize.x = 1;
+        if(playerSize.y < 3)
+            playerSize.y = 3;
+        if(playerSize.x < 3)
+            playerSize.x = 3;
 
         //Put highlight in the right place
         //Since the players room is centered, highlight is in the middle.

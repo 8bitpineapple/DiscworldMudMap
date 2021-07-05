@@ -34,6 +34,7 @@ public:
     void AddExit(std::string sourceId, std::string destinationId, std::string usrInput);
     RoomData* GetRoom(std::string room_id);
     RoomData* GetCurrentRoom();
+    std::string GetCurrentRoomId();
 
     void SetCurrentMap(int id);
     void SetCurrentMap(GeoMap* gMap);

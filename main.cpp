@@ -85,7 +85,9 @@ void displayFromUsrInput(DiscworldMinimap &discworld, SDL_Window *window, SDL_Su
 
         //discworld.BlitByRoomId(roomId);
         discworld.GuessRoom(userInput);
-        std::cout<< std::endl << discworld.GetCurrentRoom()->outerRoom << std::endl;
+        std::cout << std::endl << "Currentroom: " << discworld.GetCurrentRoomId();
+        std::cout << std::endl << "Outerroom:"  << discworld.GetCurrentRoom()->outerRoom << std::endl;
+        std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerRoomOffsetX << ", "<< discworld.GetCurrentRoom()->outerRoomOffsetY << std::endl;
         discworld.CenterPlayer();
         discworld.Blit();
         RoomData *thisRoom = discworld.GetCurrentRoom();
@@ -101,9 +103,6 @@ void displayFromUsrInput(DiscworldMinimap &discworld, SDL_Window *window, SDL_Su
             std::cout << std::endl;
         }
 
-        marker testMarker = discworld.MakeMarker(718,886);
-        testMarker.colour = 0x00FFFF;
-        discworld.DrawMarker(testMarker);
         SDL_UpdateWindowSurface(window);
 
         while (SDL_PollEvent(&events))
