@@ -1,0 +1,16 @@
+dependancies:
+libsdl2-dev
+libsdl2-image-dev
+libsqlite3-dev
+
+
+Explination:
+libsdl2-dev
+Is for displaying images in a window and getting user input
+
+libsdl2-image-dev
+Makes it easier to load Images. Sdl only has a load for BMP's and this saves doing manual conversions based on type
+
+libsqlite3-dev
+Used to call SQL queryies to quows database to load the data.
+Note: I just load the entire data because it is only ~13mb. Though I'm probabily doing it very inefficiently.
