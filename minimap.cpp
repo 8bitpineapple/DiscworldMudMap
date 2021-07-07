@@ -112,11 +112,7 @@ Vector2 MiniMap::InputToVector(std::string input)
 {
     //Tested with n,e,s,w,ne,se,sw,nw commands
     Vector2 output;
-    std::string pInput;
-        if(aliases.find(input) != aliases.end())
-            pInput = aliases[input];
-        else
-            pInput = input;
+    std::string pInput = ProcessInput(input);
     
     output.x = 0;
     output.y = 0;
@@ -196,6 +192,16 @@ Vector2 MiniMap::InputToVector(std::string input)
     return output;
 }
 
+std::string MiniMap::ProcessInput(std::string input)
+{
+    std::string pInput;
+        if(aliases.find(input) != aliases.end())
+            pInput = aliases[input];
+        else
+            pInput = input;
+    return pInput;
+}
+
 void MiniMap::SetOuterRoom(std::string roomId, std::string outerRoomId, std::string input)
 {
     RoomData* room = GetRoom(roomId);
@@ -249,22 +255,14 @@ RoomData* MiniMap::GetCurrentRoom()
 std::string MiniMap::GetExitID(std::string roomId, std::string input)
 {
     RoomData *room = GetRoom(roomId);
-    bool aliasUsed = false;
     if (room->numExits > 0)
     {
         //process the input to correct for aliases
-        std::string processedInput;
-        if(aliases.find(input) != aliases.end())
-        {
-            processedInput = aliases[input];
-            aliasUsed = true;
-        }
-        else
-            processedInput = input;
+        std::string pInput = ProcessInput(input);
         
         for (int i = 0; i < room->numExits; i++)
         {
-            if (room->exits[i].usrInput == processedInput)
+            if (room->exits[i].usrInput == pInput)
             {
                 return room->exits[i].roomId;
             }

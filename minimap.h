@@ -17,7 +17,6 @@ class MiniMap{
 private:
     GeoMap* currMap;
     GeoMap* prevMap;
-    Vector2 InputToVector(std::string input);
 protected:
     std::string currRoomId;
     std::string prevRoomId;
@@ -25,6 +24,7 @@ protected:
     std::map<int,GeoMap*> geoMapsById;
     std::map<std::string,RoomData*> roomLookup;
     std::map<std::string, std::string> aliases;
+    Vector2 InputToVector(std::string input);
 public:
     MiniMap(){};
     ~MiniMap();
@@ -49,7 +49,10 @@ public:
     void AddAlias(std::string key, std::string value);
 
     //Sets room outer room to outerroom and tries to guess the offset based on userInput, i.e. n = 1 up i.e. y=-1
-    void SetOuterRoom(std::string roomId, std::string outerRoomId, std::string input);
+    virtual void SetOuterRoom(std::string roomId, std::string outerRoomId, std::string input);
+
+    //Returns input string after processing, e.g. After alias have been taken into account.
+    std::string ProcessInput(std::string input);
 
     GeoMap* GetCurrMapPtr();
 };
