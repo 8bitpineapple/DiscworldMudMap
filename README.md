@@ -1,7 +1,7 @@
 # DiscworldMudMap
 A map viewer of Terry Pratchett's Discworld as it appears in the [Discworld MUD](http://discworld.starturtle.net/lpc/).
 For use with Tintin++ but potentially other MUD clients.
-![MiniMap Image](https://i.imgur.com/CpyxuNE.png)
+![MiniMap Image](https://i.imgur.com/HKg5Y7R.png)
 You _technically_ could use this as a standalone application browsing the maps or doing so via scripts.
 E.g. Running the minimap and feeding it through console in a roomid will display that room id.
 
