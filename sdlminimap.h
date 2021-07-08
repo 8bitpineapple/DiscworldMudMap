@@ -40,7 +40,8 @@ private:
     Vector2 playerSize;
 
     //Maps ID's to Loaded Image Surfaces
-    std::map<int,SDL_Surface*> imageById;
+    static std::map<int,SDL_Surface*> imageById;
+    static int SdlMiniMapCount;
     //std::map<int,SDL_Texture*> textureById;
 public:
     SdlMiniMap(SDL_Surface* _display);
