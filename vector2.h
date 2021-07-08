@@ -17,6 +17,11 @@ public:
     return Vector2(x-b.x,y-b.y);
     }
 
+    Vector2 operator*(int i)
+    {
+        return Vector2(x*i,y*i);
+    }
+
     //Keeping x and y public to make life easier
     int x;
     int y;
