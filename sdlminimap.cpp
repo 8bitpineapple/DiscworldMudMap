@@ -1,7 +1,11 @@
 #include "sdlminimap.h"
 
+std::map<int,SDL_Surface*> SdlMiniMap::imageById;
+int SdlMiniMap::SdlMiniMapCount = 0;
+
 SdlMiniMap::SdlMiniMap(SDL_Surface* _display)
 {
+    SdlMiniMapCount++;
     display = _display;
     artSize.y = 768;
     artSize.x = 1024;
@@ -15,10 +19,15 @@ SdlMiniMap::SdlMiniMap(SDL_Surface* _display)
 }
 SdlMiniMap::~SdlMiniMap()
 {
-    for(auto itor = imageById.begin();itor !=imageById.end(); itor++)
+    SdlMiniMapCount--;
+    if(SdlMiniMapCount <= 0)
     {
-        SDL_FreeSurface(itor->second);
+        for(auto itor = imageById.begin();itor !=imageById.end(); itor++)
+        {
+            SDL_FreeSurface(itor->second);
+        }
     }
+    
 }
 
 void SdlMiniMap::SetDisplay(SDL_Surface* _display)
