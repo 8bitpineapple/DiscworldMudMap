@@ -146,7 +146,7 @@ void handleUserInput(std::stringstream &userInputBuffer, bool& gettingUserInput)
     while(gettingUserInput)
     {
         std::getline(std::cin,input);
-        userInputBuffer << input;
+        userInputBuffer << input << std::endl;
        // std::cout << "You wrote " << input << std::endl;
     }
 }
@@ -212,11 +212,9 @@ void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, S
         }
 
         
-        //std::cin >> userInput;
         userInput = "";
-        userInputBuffer.clear(); //Clear any errors cause' ... whatever.
-        //Idealy we should write better multithreaded code to prevent getline running
-        //When the buffer is empty. But for now this is working.
+        //userInputBuffer.clear(); //Clear any errors cause' ... whatever.
+
         if(userInputBuffer.rdbuf()->in_avail() != 0)
         {
             //"New input detected";
