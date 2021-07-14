@@ -15,7 +15,7 @@ struct Exit
 
 //Assume each room has no more than 15 exits
 //We waste a bit of memory, but also don't have to deal with dynamically allocating memory
-const int MAXEXITS = 15;
+const int kMaxExits = 15;
 
 struct RoomData
 {
@@ -25,7 +25,7 @@ struct RoomData
     std::string shortDes;
     std::string roomType;
     int numExits;
-    Exit exits[MAXEXITS];
+    Exit exits[kMaxExits];
 
     //An outerroom and offset describe the position of this room
     //Based on a room that's considered more "outside".

@@ -56,7 +56,7 @@ void MiniMap::AddExit(std::string sourceId, std::string destinationId, std::stri
     else
     {
         sourceRoom = roomLookup.find(sourceId)->second;
-        if(sourceRoom->numExits >= MAXEXITS)
+        if(sourceRoom->numExits >= kMaxExits)
         {
             std::cout << "WARNING -- Room " << sourceId << "contains too many exits"<<std::endl;
             throw "Room exits exceeds max exits";
