@@ -33,8 +33,8 @@ public:
     SdlMiniMap(SDL_Surface* _display);
     ~SdlMiniMap();
 
-    void DrawMarker(marker& mark);
-    marker MakeMarker(int x,int y);
+    void DrawMarker(Marker& mark);
+    Marker MakeMarker(int x,int y);
 
     void Blit();
     void LoadAllImages();

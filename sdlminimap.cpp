@@ -108,7 +108,7 @@ void SdlMiniMap::Blit()
     
 }
 
-void SdlMiniMap::DrawMarker(marker& mark)
+void SdlMiniMap::DrawMarker(Marker& mark)
 {
     SDL_Rect highlight;
     //The highlight position needs to be modified by the current artDestination
@@ -129,9 +129,9 @@ void SdlMiniMap::DrawMarker(marker& mark)
     return;
 }
 
-marker SdlMiniMap::MakeMarker(int x,int y)
+Marker SdlMiniMap::MakeMarker(int x,int y)
 {
-    marker output;
+    Marker output;
     if(roomLookup.find(currRoomId) != roomLookup.end())
     {
         GeoMap* currGeoMap = GetCurrMapPtr();
