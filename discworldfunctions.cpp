@@ -242,6 +242,9 @@ void DiscworldFunctions::addDiscworldAliases(MiniMap* mmap)
     mmap->AddAlias("journey southeast","journey se");
     mmap->AddAlias("journey southwest","journey sw");
     mmap->AddAlias("journey northwest","journey nw");
+
+    mmap->AddAlias("up","u");
+    mmap->AddAlias("down","d");
 }
 
 //Thesethree need to work together to get the job done.
