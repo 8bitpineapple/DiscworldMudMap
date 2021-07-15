@@ -90,7 +90,7 @@ void displayFromUsrInput(DiscworldMinimap &discworld, SDL_Window *window, SDL_Su
         discworld.GuessRoom(userInput);
         std::cout << std::endl << "Currentroom: " << discworld.GetCurrentRoomId();
         std::cout << std::endl << "Outerroom:"  << discworld.GetCurrentRoom()->outerRoom << std::endl;
-        std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerRoomOffsetX << ", "<< discworld.GetCurrentRoom()->outerRoomOffsetY << std::endl;
+        std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerRoomXPos << ", "<< discworld.GetCurrentRoom()->outerRoomYPos << std::endl;
         discworld.CenterPlayer();
         discworld.Blit();
         RoomData *thisRoom = discworld.GetCurrentRoom();
@@ -139,7 +139,6 @@ void displayFromUsrInput(DiscworldMinimap &discworld, SDL_Window *window, SDL_Su
 }
 
 
-
 void handleUserInput(std::stringstream &userInputBuffer, bool& gettingUserInput)
 {
     std::string input;
@@ -147,12 +146,15 @@ void handleUserInput(std::stringstream &userInputBuffer, bool& gettingUserInput)
     {
         std::getline(std::cin,input);
         userInputBuffer << input << std::endl;
-       // std::cout << "You wrote " << input << std::endl;
     }
 }
 
 void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, SDL_Surface *windowSurface)
 {
+    // std::cout << "ROAD TEST " << std::endl;
+    // std::cout << discworld.FollowRoad(Vector2(1302, 3852),Vector2(1303, 3852),11).x << std::endl;
+    // std::cout << discworld.FollowRoad(Vector2(1302, 3852),Vector2(1303, 3852),11).y << std::endl;
+    // std::cout << "ROAD TEST " << std::endl;
     std::stringstream userInputBuffer;
     SDL_Event events;
     bool running = true;
@@ -180,7 +182,8 @@ void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, S
             discworld.GuessRoom(userInput);
             std::cout << std::endl << "Currentroom: " << discworld.GetCurrentRoomId();
             std::cout << std::endl << "Outerroom:"  << discworld.GetCurrentRoom()->outerRoom << std::endl;
-            std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerRoomOffsetX << ", "<< discworld.GetCurrentRoom()->outerRoomOffsetY << std::endl;
+            std::cout << std::endl << "Outerroom Cords " << discworld.GetCurrentRoom()->outerRoomXPos << ", "<< discworld.GetCurrentRoom()->outerRoomYPos << std::endl;
+            std::cout << std::endl << "Outerroom Mapid " << discworld.GetCurrentRoom()->outerRoomMapId << std::endl;
             RoomData *thisRoom = discworld.GetCurrentRoom();
             if (thisRoom != nullptr && thisRoom->numExits > 0)
             {
@@ -214,19 +217,11 @@ void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, S
         
         userInput = "";
         //userInputBuffer.clear(); //Clear any errors cause' ... whatever.
-
         if(userInputBuffer.rdbuf()->in_avail() != 0)
         {
             //"New input detected";
             std::getline(userInputBuffer,userInput);
         }
-
-
-        if(userInput.length()>0)
-        {
-            std::cout << userInput;
-        }
-        std::cout << userInput;
         
         if (userInput == "q")
         {

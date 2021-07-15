@@ -27,18 +27,18 @@ struct RoomData
     int numExits;
     Exit exits[kMaxExits];
 
-    //An outerroom and offset describe the position of this room
-    //Based on a room that's considered more "outside".
+    //An outerroom is the room considered more "outside".
     //For example, A library room with a library map id
-    //with an outerroom to just outside the library on a university map
+    //will have an outerroom to just outside the library on a university map
     //The room just outside the libary could have an outer room of a town map
     //Just outside the university, which will also have an outerroom.
     //
     //Eventually you'll reach "The planet" with an outerRoom = nullptr
     // ... Unless the MUD has a SolarSystem with other planets or something ...
     std::string outerRoom = "";
-    int outerRoomOffsetX = 0;
-    int outerRoomOffsetY = 0;
+    int outerRoomXPos = 0;
+    int outerRoomYPos = 0;
+    int outerRoomMapId = 0;
     //The magic in the outerRoom pointer is in setting them up.
     //I have an algorithm in mind for the case of Discworld -- See Discworld Functions.
 };

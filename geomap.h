@@ -21,6 +21,7 @@ private:
     int backgroundColour;
     friend class MiniMap;
     friend class SdlMiniMap;
+    friend class DiscworldMinimap;
 public:
     GeoMap(int _id, std::string _filename ,std::string _name ,Vector2 _tileSize ,Vector2 _center,std::string _shortName,int _backgroundColour);
     //void SetPlayerPos(Vector2 pos);

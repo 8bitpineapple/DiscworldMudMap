@@ -211,16 +211,21 @@ void MiniMap::SetOuterRoom(std::string roomId, std::string outerRoomId, std::str
     if(room->mapId == outerRoom->mapId)
     {
         room->outerRoom = outerRoom->outerRoom;
-        room->outerRoomOffsetX = outerRoom->outerRoomOffsetX;
-        room->outerRoomOffsetY = outerRoom->outerRoomOffsetY;
+        room->outerRoomXPos = outerRoom->outerRoomXPos;
+        room->outerRoomYPos = outerRoom->outerRoomYPos;
+        room->outerRoomMapId = outerRoom->outerRoomMapId;
     }
     else
     {
         //The mapids are different set the rooms outerroom to outerroom and calc offsets
         room->outerRoom = outerRoomId;
         Vector2 offset = InputToVector(input);
-        room->outerRoomOffsetX  = offset.x;
-        room->outerRoomOffsetY = offset.y;
+        Vector2 roomTileSize = geoMapsById.find(outerRoom->mapId)->second->tileSize;
+        offset.x = offset.x * roomTileSize.x;
+        offset.y = offset.y * roomTileSize.y;
+        room->outerRoomXPos  = outerRoom->xpos + offset.x;
+        room->outerRoomYPos = outerRoom->ypos + offset.y;
+        room->outerRoomMapId = outerRoom->mapId;
     }
     
     return;
