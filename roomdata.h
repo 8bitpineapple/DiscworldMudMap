@@ -36,8 +36,8 @@ struct RoomData
     //Eventually you'll reach "The planet" with an outerRoom = nullptr
     // ... Unless the MUD has a SolarSystem with other planets or something ...
     std::string outerRoom = "";
-    int outerRoomXPos = 0;
-    int outerRoomYPos = 0;
+    int outerXPos = 0;
+    int outerYPos = 0;
     int outerRoomMapId = 0;
     //The magic in the outerRoom pointer is in setting them up.
     //I have an algorithm in mind for the case of Discworld -- See Discworld Functions.

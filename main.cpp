@@ -90,7 +90,7 @@ void displayFromUsrInput(DiscworldMinimap &discworld, SDL_Window *window, SDL_Su
         discworld.GuessRoom(userInput);
         std::cout << std::endl << "Currentroom: " << discworld.GetCurrentRoomId();
         std::cout << std::endl << "Outerroom:"  << discworld.GetCurrentRoom()->outerRoom << std::endl;
-        std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerRoomXPos << ", "<< discworld.GetCurrentRoom()->outerRoomYPos << std::endl;
+        std::cout << std::endl << "Outer Offset " << discworld.GetCurrentRoom()->outerXPos << ", "<< discworld.GetCurrentRoom()->outerYPos << std::endl;
         discworld.CenterPlayer();
         discworld.Blit();
         RoomData *thisRoom = discworld.GetCurrentRoom();
@@ -182,8 +182,8 @@ void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, S
             discworld.GuessRoom(userInput);
             std::cout << std::endl << "Currentroom: " << discworld.GetCurrentRoomId();
             std::cout << std::endl << "Outerroom:"  << discworld.GetCurrentRoom()->outerRoom << std::endl;
-            std::cout << std::endl << "Outerroom Cords " << discworld.GetCurrentRoom()->outerRoomXPos << ", "<< discworld.GetCurrentRoom()->outerRoomYPos << std::endl;
-            std::cout << std::endl << "Outerroom Mapid " << discworld.GetCurrentRoom()->outerRoomMapId << std::endl;
+            std::cout << std::endl << "Outer Cords " << discworld.GetCurrentRoom()->outerXPos << ", "<< discworld.GetCurrentRoom()->outerYPos << std::endl;
+            std::cout << std::endl << "Outer Mapid " << discworld.GetCurrentRoom()->outerRoomMapId << std::endl;
             RoomData *thisRoom = discworld.GetCurrentRoom();
             if (thisRoom != nullptr && thisRoom->numExits > 0)
             {

@@ -41,8 +41,8 @@ void DiscworldMinimap::SetOuterRoom(std::string roomId, std::string outerRoomId,
     if(room->mapId == outerRoom->mapId)
     {
         room->outerRoom = outerRoom->outerRoom;
-        room->outerRoomXPos = outerRoom->outerRoomXPos;
-        room->outerRoomYPos = outerRoom->outerRoomYPos;
+        room->outerXPos = outerRoom->outerXPos;
+        room->outerYPos = outerRoom->outerYPos;
         room->outerRoomMapId = outerRoom->outerRoomMapId;
     }
     else
@@ -50,8 +50,8 @@ void DiscworldMinimap::SetOuterRoom(std::string roomId, std::string outerRoomId,
         //The mapids are different set the rooms outerroom to outerroom and calc offsets
         room->outerRoom = outerRoomId;
         Vector2 offset = InputGuess(outerRoomId, input);
-        room->outerRoomXPos  = offset.x;
-        room->outerRoomYPos = offset.y;
+        room->outerXPos  = offset.x;
+        room->outerYPos = offset.y;
         room->outerRoomMapId = outerRoom->mapId;
     }
     

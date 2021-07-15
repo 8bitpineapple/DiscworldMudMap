@@ -211,8 +211,8 @@ void MiniMap::SetOuterRoom(std::string roomId, std::string outerRoomId, std::str
     if(room->mapId == outerRoom->mapId)
     {
         room->outerRoom = outerRoom->outerRoom;
-        room->outerRoomXPos = outerRoom->outerRoomXPos;
-        room->outerRoomYPos = outerRoom->outerRoomYPos;
+        room->outerXPos = outerRoom->outerXPos;
+        room->outerYPos = outerRoom->outerYPos;
         room->outerRoomMapId = outerRoom->outerRoomMapId;
     }
     else
@@ -223,8 +223,8 @@ void MiniMap::SetOuterRoom(std::string roomId, std::string outerRoomId, std::str
         Vector2 roomTileSize = geoMapsById.find(outerRoom->mapId)->second->tileSize;
         offset.x = offset.x * roomTileSize.x;
         offset.y = offset.y * roomTileSize.y;
-        room->outerRoomXPos  = outerRoom->xpos + offset.x;
-        room->outerRoomYPos = outerRoom->ypos + offset.y;
+        room->outerXPos  = outerRoom->xpos + offset.x;
+        room->outerYPos = outerRoom->ypos + offset.y;
         room->outerRoomMapId = outerRoom->mapId;
     }
     
