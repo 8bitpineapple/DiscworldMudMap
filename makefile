@@ -1,4 +1,4 @@
-OBJS = main.cpp discworldfunctions.cpp vector2.cpp geomap.cpp minimap.cpp sdlminimap.cpp discworldminimap.cpp
+OBJS = main.cpp marker.h discworldfunctions.cpp vector2.cpp geomap.cpp minimap.cpp sdlminimap.cpp discworldminimap.cpp
 OBJ_NAME = "build/minimap"
 CC = g++
 COMPILER_FLAGS= -lSDL2 -lSDL2_image -lsqlite3 -lpthread
