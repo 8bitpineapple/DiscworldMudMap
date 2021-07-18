@@ -234,6 +234,8 @@ std::string DiscTime::ReadableTime()
     std::string output = "";
     output += std::to_string(Hour12());
     output += ":";
+    if(Minute()<10)
+        output += "0";
     output += std::to_string(Minute());
     if(Hour24() > 12)
         output += "pm";
