@@ -80,4 +80,36 @@ private:
 //AM and UC
 //AM counts full astro years since the founding on AM
 //UC counts half years since the founding of the unseen university (1282 AM)
+
+
+
+//There are special holidays,
+
+
+//Typing Calendar list in game says - 
+// Special days tied to the Discworld calendar
+// -------------------------------------------
+// Hogswatchday (1 Offle Prime)
+// Crueltide (1 Offle Secundus)
+// Small Gods Day (24 June Prime)
+// Alls Fallow (24 June Secundus)
+// Soul Cake Tuesday (23 August)
+// Sektober Fools' Day (1 Sektober)
+
+// Special days tied to the Roundworld calendar
+// --------------------------------------------
+// Cream Pie Day (11 January)
+// Cabbage Day (17 February)
+// Lilac Day (12 March)
+// Ukulele Day (23 August)
+// Beard Day (10 September)
+// Pirate Day (19 September)
+// Greco's Day Off (30 October)
+// Pink Bow Day (10 November)
+// Christmas Season (21-25 December)
+
+
+// In Quows QuowBar in the code it looks like he uses 16/7 = Small Gods Day?
+// This is a mistake, and it is actually  24 June Prime
+
 #endif
