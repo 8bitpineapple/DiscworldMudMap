@@ -72,6 +72,7 @@ Current dependancies include:
  - libsdl2-dev
  - libsdl2-image-dev
  - libsqlite3-dev
+ - libsdl2-ttf-dev
  - The g++ compiler.
 
 SDL2 is used for displaying the map and libsqlite3 is used for reading Quows SDL database.
@@ -80,6 +81,7 @@ On a ubuntu based distribution you should be able to install dependancies with:
 - ```sudo apt-get install libsdl2-dev ```  
 - ```sudo apt-get install libsdl2-image-dev``` 
 - ```sudo apt-get install libsqlite3-dev``` 
+- ```sudo apt-get install libsdl2-ttf-dev```
 - ```sudo apt install g++``` 
 
 And then finally:
