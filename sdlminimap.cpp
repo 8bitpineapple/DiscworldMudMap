@@ -33,11 +33,6 @@ SdlMiniMap::~SdlMiniMap()
     
 }
 
-// void SdlMiniMap::SetDisplay(SDL_Surface* _display)
-// {
-//     display = _display;
-// }
-
 void SdlMiniMap::SetRenderer(SDL_Renderer* _renderer)
 {
     renderer = _renderer;
@@ -100,34 +95,6 @@ SDL_Texture* SdlMiniMap::GetCurrentMapArt()
 
 void SdlMiniMap::Blit()
 {
-
-    // // std::cout << "x" << artDestination.x << std::endl;
-    // // std::cout << "y" << artDestination.y << std::endl;
-
-    // SDL_Rect artDestRect;
-    // artDestRect.x = artDestination.x;
-    // artDestRect.y = artDestination.y;
-    // artDestRect.h = artSize.y;
-    // artDestRect.w = artSize.x;
-    
-    // SDL_Rect playerHighlightRect;
-
-    // playerHighlightRect.x = playerDestination.x;
-    // playerHighlightRect.y = playerDestination.y;
-    // playerHighlightRect.h = playerSize.y;
-    // playerHighlightRect.w = playerSize.x;
-
-    // //Blit art on the screen
-    // //SDL_BlitSurface(currentMapArt, NULL, display, &artDestRect);
-    // SDL_RenderCopy(renderer,currentMapArt,NULL, artDestRect);
-
-    // //Render art on screen
-
-    // //Blit highlight onto display
-    // //SDL_FillRect(display,&playerHighlightRect,0xEE0000);
-
-    
-
     //Notes
     //We want to maintain the aspect ratio of the image
     //We don't want to scale the image when resizing the window (?)
@@ -234,7 +201,6 @@ void SdlMiniMap::CenterPlayer()
         playerDestination.x = (displayW / 2) - playerSize.x/3;
         playerDestination.y = (displayH / 2) - playerSize.y/3;
 
-        //std::cout << currentRoom->xpos<< ", " << currentRoom->ypos;
         
     }
     else
