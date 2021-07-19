@@ -2,7 +2,7 @@
 
 SDL_Surface* DiscworldMinimap::terrains = nullptr;
 
-DiscworldMinimap::DiscworldMinimap(SDL_Surface* _display): SdlMiniMap(_display)
+DiscworldMinimap::DiscworldMinimap(SDL_Renderer* _renderer, SDL_Window* _window): SdlMiniMap(_renderer,_window)
 {
     journeyMode = false;
     if(terrains == nullptr)

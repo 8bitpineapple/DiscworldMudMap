@@ -1,12 +1,15 @@
 #include "sdlminimap.h"
 
-std::map<int,SDL_Surface*> SdlMiniMap::imageById;
+
+std::map<int,SDL_Texture*> SdlMiniMap::textureById;
+
 int SdlMiniMap::SdlMiniMapCount = 0;
 
-SdlMiniMap::SdlMiniMap(SDL_Surface* _display)
+SdlMiniMap::SdlMiniMap(SDL_Renderer* _renderer, SDL_Window* _window)
 {
     SdlMiniMapCount++;
-    display = _display;
+    renderer = _renderer;
+    window = _window;
     artSize.y = 768;
     artSize.x = 1024;
     artDestination.x = 0;
@@ -22,26 +25,39 @@ SdlMiniMap::~SdlMiniMap()
     SdlMiniMapCount--;
     if(SdlMiniMapCount <= 0)
     {
-        for(auto itor = imageById.begin();itor !=imageById.end(); itor++)
+        for(auto itor = textureById.begin();itor !=textureById.end(); itor++)
         {
-            SDL_FreeSurface(itor->second);
+            SDL_DestroyTexture(itor->second);
         }
     }
     
 }
 
-void SdlMiniMap::SetDisplay(SDL_Surface* _display)
+// void SdlMiniMap::SetDisplay(SDL_Surface* _display)
+// {
+//     display = _display;
+// }
+
+void SdlMiniMap::SetRenderer(SDL_Renderer* _renderer)
 {
-    display = _display;
+    renderer = _renderer;
+}
+
+void SdlMiniMap::SetWindow(SDL_Window* _window)
+{
+    window = _window;
 }
 
 bool SdlMiniMap::AddImage(int id,std::string imageDir)
 {
-    if(imageById.find(id) == imageById.end())
+    if(textureById.find(id) == textureById.end())
     {
         //Not loaded yet
         SDL_Surface* surfacePtr = IMG_Load(imageDir.c_str());
-        imageById.insert(std::pair<int,SDL_Surface*>(id,surfacePtr));
+        //imageById.insert(std::pair<int,SDL_Surface*>(id,surfacePtr));
+        SDL_Texture* texturePtr = SDL_CreateTextureFromSurface(renderer, surfacePtr);
+        SDL_FreeSurface(surfacePtr);
+        textureById.insert(std::pair<int,SDL_Texture*>(id,texturePtr));
         return true;
     }
     else
@@ -66,11 +82,11 @@ void SdlMiniMap::LoadAllImages()
 }
 
 
-SDL_Surface* SdlMiniMap::GetCurrentMapArt()
+SDL_Texture* SdlMiniMap::GetCurrentMapArt()
 {
     int id = GetCurrMapPtr()->id;
     //Check if art is loaded
-    if(imageById.find(id) == imageById.end())
+    if(textureById.find(id) == textureById.end())
     {
         //Map isn't loaded, load it
         std::string imageDir = "./maps/";
@@ -78,34 +94,62 @@ SDL_Surface* SdlMiniMap::GetCurrentMapArt()
         AddImage(id, imageDir.c_str());
     }
     //Return the Art
-    return imageById.find(id)->second;
+    return textureById.find(id)->second;
 
 }
 
 void SdlMiniMap::Blit()
 {
 
-    // std::cout << "x" << artDestination.x << std::endl;
-    // std::cout << "y" << artDestination.y << std::endl;
+    // // std::cout << "x" << artDestination.x << std::endl;
+    // // std::cout << "y" << artDestination.y << std::endl;
+
+    // SDL_Rect artDestRect;
+    // artDestRect.x = artDestination.x;
+    // artDestRect.y = artDestination.y;
+    // artDestRect.h = artSize.y;
+    // artDestRect.w = artSize.x;
+    
+    // SDL_Rect playerHighlightRect;
+
+    // playerHighlightRect.x = playerDestination.x;
+    // playerHighlightRect.y = playerDestination.y;
+    // playerHighlightRect.h = playerSize.y;
+    // playerHighlightRect.w = playerSize.x;
+
+    // //Blit art on the screen
+    // //SDL_BlitSurface(currentMapArt, NULL, display, &artDestRect);
+    // SDL_RenderCopy(renderer,currentMapArt,NULL, artDestRect);
+
+    // //Render art on screen
+
+    // //Blit highlight onto display
+    // //SDL_FillRect(display,&playerHighlightRect,0xEE0000);
+
+    
+
+    //Notes
+    //We want to maintain the aspect ratio of the image
+    //We don't want to scale the image when resizing the window (?)
+    //We want to center the camera position 
+
 
     SDL_Rect artDestRect;
     artDestRect.x = artDestination.x;
     artDestRect.y = artDestination.y;
     artDestRect.h = artSize.y;
     artDestRect.w = artSize.x;
-    
+    SDL_RenderCopy(renderer,currentMapArt,NULL,&artDestRect);
+
     SDL_Rect playerHighlightRect;
 
     playerHighlightRect.x = playerDestination.x;
     playerHighlightRect.y = playerDestination.y;
     playerHighlightRect.h = playerSize.y;
     playerHighlightRect.w = playerSize.x;
+    SDL_SetRenderDrawColor(renderer,255,0,0,255);
+    SDL_RenderFillRect(renderer,&playerHighlightRect);
 
-    //Blit art on the screen
-    SDL_BlitSurface(currentMapArt, NULL, display, &artDestRect);
-    //Blit highlight onto display
-    SDL_FillRect(display,&playerHighlightRect,0xEE0000);
-    
 }
 
 void SdlMiniMap::DrawMarker(Marker& mark)
@@ -166,12 +210,14 @@ void SdlMiniMap::CenterPlayer()
         //Get extra data for map
         GeoMap* currGeoMap = GetCurrMapPtr();
 
-
+        int displayW;
+        int displayH;
+        SDL_GetWindowSize(window,&displayW,&displayH);
         //Shift art so room pos is in the center
-        artDestination.x = (display->w / 2) - currentRoom->xpos;
-        artDestination.y = (display->h / 2) - currentRoom->ypos;
-        artSize.y = currentMapArt->h;
-        artSize.x = currentMapArt->w;
+        artDestination.x = (displayW / 2) - currentRoom->xpos;
+        artDestination.y = (displayH / 2) - currentRoom->ypos;
+
+        SDL_QueryTexture(currentMapArt, NULL, NULL, &artSize.x, &artSize.y);
 
         //Set player highlight size
         playerSize.y = (currGeoMap->tileSize.y/14)*6;
@@ -185,8 +231,8 @@ void SdlMiniMap::CenterPlayer()
 
         //Put highlight in the right place
         //Since the players room is centered, highlight is in the middle.
-        playerDestination.x = (display->w / 2) - playerSize.x/3;
-        playerDestination.y = (display->h / 2) - playerSize.y/3;
+        playerDestination.x = (displayW / 2) - playerSize.x/3;
+        playerDestination.y = (displayH / 2) - playerSize.y/3;
 
         //std::cout << currentRoom->xpos<< ", " << currentRoom->ypos;
         

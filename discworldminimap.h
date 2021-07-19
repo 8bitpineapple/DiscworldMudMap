@@ -19,7 +19,7 @@ class DiscworldMinimap : public SdlMiniMap
 {
 public:
     //DiscworldMinimap(SDL_Surface* _display) : SdlMiniMap(_display) {journeyMode = false;}
-    DiscworldMinimap(SDL_Surface* _display);
+    DiscworldMinimap(SDL_Renderer* _renderer, SDL_Window* _window);
     //Appends journey or walk onto input depending on journeyMode
     std::string TerrainsInput(std::string input);
     std::string GetExitID(std::string roomId, std::string input) override;

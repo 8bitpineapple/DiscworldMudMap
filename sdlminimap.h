@@ -13,7 +13,7 @@
 class SdlMiniMap : public MiniMap
 {
 private:
-    SDL_Surface* currentMapArt;
+    SDL_Texture* currentMapArt;
     RoomData* currentRoom;
 
     SDL_Surface* display;
@@ -25,12 +25,14 @@ private:
     Vector2 playerDestination;  // Position of player highlight
     Vector2 playerSize;
 
-    //Maps ID's to Loaded Image Surfaces
-    static std::map<int,SDL_Surface*> imageById;
+    //Maps ID's to loaded Textures
+    static std::map<int,SDL_Texture*> textureById;
+
+    SDL_Renderer* renderer;
     static int SdlMiniMapCount;
-    //std::map<int,SDL_Texture*> textureById;
+    
 public:
-    SdlMiniMap(SDL_Surface* _display);
+    SdlMiniMap(SDL_Renderer* _renderer, SDL_Window* _window);
     ~SdlMiniMap();
 
     void DrawMarker(Marker& mark);
@@ -38,9 +40,11 @@ public:
 
     void Blit();
     void LoadAllImages();
-    void SetDisplay(SDL_Surface* _display);
+    //void SetDisplay(SDL_Surface* _display);
+    void SetRenderer(SDL_Renderer* _renderer);
+    void SetWindow(SDL_Window* _window);
 
-    SDL_Surface* GetCurrentMapArt();
+    SDL_Texture* GetCurrentMapArt();
     void CenterPlayer();
 
 };
