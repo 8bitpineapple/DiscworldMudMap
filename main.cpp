@@ -48,6 +48,7 @@ void renderDiscTime(DiscTime dTime, SDL_Renderer* renderer, SDL_Window* window, 
     SDL_SetRenderDrawColor(renderer,255,255,255,215);
     SDL_RenderFillRect(renderer,&textRext2);
     SDL_RenderCopy(renderer,textTexture,NULL,&textRext);
+    SDL_DestroyTexture(textTexture);
 }
 
 void displayDiscwolrdThreaded(DiscworldMinimap &discworld, SDL_Window *window, SDL_Renderer* renderer)
