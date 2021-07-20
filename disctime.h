@@ -51,6 +51,7 @@ private:
     static const int kNumDays = 8;
     static const char* kDay[kNumDays];
     static const char* kDayShort[kNumDays];
+    static const int kMagicStartDay = 5; //The day discworld months start on
     std::chrono::seconds unixTime;
 
     //NOTE counts from day 1. i.e. 1 => st, 2 => nd, etc

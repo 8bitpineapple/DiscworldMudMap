@@ -180,7 +180,7 @@ std::string DiscTime::MonthName()
 }
 std::string DiscTime::DayName()
 {
-    return DayName(DayOfMonth());
+    return DayName(DayOfMonth()+kMagicStartDay);
 }
 
 std::string DiscTime::ShortMonthName()
@@ -248,7 +248,7 @@ std::string DiscTime::ReadableTime()
 std::string DiscTime::ReadableDate()
 {
     std::string output = "";
-    output += DayName(DayOfMonth());
+    output += DayName();
     output += " ";
     output += std::to_string(DayOfMonth()+1);
     output += DayOrdinal(DayOfMonth()+1);
