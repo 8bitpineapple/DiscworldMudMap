@@ -1,3 +1,7 @@
+**⚠️ This project is a work in progress.**  
+While it's already functional, it's still evolving and may have rough edges.
+
+
 # DiscworldMudMap
 A map viewer of Terry Pratchett's Discworld as it appears in the [Discworld MUD](http://discworld.starturtle.net/lpc/).
 For use with Tintin++ but potentially other MUD clients.
@@ -60,7 +64,7 @@ You can bind any of these functions to keys using Tintin++ macros, e.g.
 Binds f11 and f12 to start/stop following your position.
 
   
-These scripts aren't the best but serve as a starting point to get a mostly functional map.
+These scripts are functional but still evolving — they work well as a base, but may need refinement.
 The map is by default Always on top, so you can position it above your client.
 ![tintin++ Client with DiscworldMudMap on top](https://i.imgur.com/1yithYV.png)
    
@@ -87,3 +91,10 @@ On a ubuntu based distribution you should be able to install dependencies with:
 And then finally:
 - ```make``` 
 - Copy the contents of ./build/ to wherever you'd like.
+
+- ## Roadmap / Planned Features
+- Add alternate IPC methods for clients that can't launch binaries
+- Improve auto-follow functionality
+- Cross-platform support (maybe?)
+- Precompiled binaries or installer script
+
