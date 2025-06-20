@@ -90,9 +90,9 @@ And then finally:
 - ```make``` 
 - Copy the contents of ./build/ to wherever you'd like.
 
-- ## Roadmap / Planned Features
+# Roadmap / Planned Features
 - Add alternate IPC methods for clients that can't launch binaries
 - Improve auto-follow functionality
-- Cross-platform support (maybe?)
+- Cross-platform support
 - Precompiled binaries or installer script
 
