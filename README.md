@@ -6,8 +6,6 @@ While it's already functional, it's still evolving and may have rough edges.
 A map viewer of Terry Pratchett's Discworld as it appears in the [Discworld MUD](http://discworld.starturtle.net/lpc/).
 For use with Tintin++ but potentially other MUD clients.
 ![MiniMap Image](https://i.imgur.com/qcTfmhu.png)
-You _technically_ could use this as a standalone application browsing the maps or doing so via scripts.
-E.g. You can use the console to navigate the map by writing the exits such as n,e,s,w - And "Zoomout" to leave the current room / city / whatever you are "inside"
 
 This map is largely based on [Quow's Quow Bar](https://quow.co.uk/minimap.php), a Mush Client Plugin . I like Quow's use of Kefka's/Airk's maps for a minimap but arn't that interested in using Mush Client, I'm using the files in his plugin to render a map in a standalone SDL2 application that will be usable in other clients.
 
