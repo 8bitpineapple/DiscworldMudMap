@@ -8,7 +8,7 @@ E.g. Running the minimap and feeding it through console in a roomid will display
 This map is largely based on [Quow's Quow Bar](https://quow.co.uk/minimap.php), a Mush Client Plugin . I like Quow's use of Kefka's/Airk's maps for a minimap but arn't that interested in using Mush Client, I'm using the files in his plugin to render a map in a standalone SDL2 application that will be usable in other clients.
 
 I make use of map images by [Kefka](https://dw.daftjunk.com/) , Airk, and [Quow](http://www.quow.co.uk/).
-I also use Quows SQL database to initally load in information about rooms and information about the map png's.
+I also use Quows SQL database to initially load in information about rooms and information about the map png's.
 
 Also credit to Oki as I'm using [Oki's TinTin++ Mud Client scripts](https://fossil.tubul.net/tt_dw/doc/trunk/README.md).
 
@@ -60,15 +60,15 @@ You can bind any of these functions to keys using Tintin++ macros, e.g.
 Binds f11 and f12 to start/stop following your position.
 
   
-These scripts arn't the best but serve as a starting point to get a mostly functional map.
-The map is defaulty Always on top, so you can position it above your client.
+These scripts aren't the best but serve as a starting point to get a mostly functional map.
+The map is by default Always on top, so you can position it above your client.
 ![tintin++ Client with DiscworldMudMap on top](https://i.imgur.com/1yithYV.png)
    
 # Installation / Compilation
 Right now the Makefile is setup so that you can compile on Linux using make and run the resulting binary in build/minimap.
 To copy the map somewhere else be sure to also copy /maps/ and /quow/ inside the build directory.
 
-Current dependancies include:
+Current dependencies include:
  - libsdl2-dev
  - libsdl2-image-dev
  - libsqlite3-dev
@@ -77,7 +77,7 @@ Current dependancies include:
 
 SDL2 is used for displaying the map and libsqlite3 is used for reading Quows SDL database.
 
-On a ubuntu based distribution you should be able to install dependancies with:
+On a ubuntu based distribution you should be able to install dependencies with:
 - ```sudo apt-get install libsdl2-dev ```  
 - ```sudo apt-get install libsdl2-image-dev``` 
 - ```sudo apt-get install libsqlite3-dev``` 
