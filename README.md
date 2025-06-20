@@ -9,7 +9,7 @@ For use with Tintin++ but potentially other MUD clients.
 
 This map is largely based on [Quow's Quow Bar](https://quow.co.uk/minimap.php), a Mush Client Plugin . I like Quow's use of Kefka's/Airk's maps for a minimap but arn't that interested in using Mush Client, I'm using the files in his plugin to render a map in a standalone SDL2 application that will be usable in other clients.
 
-I make use of map images by [Kefka](https://dw.daftjunk.com/) , Airk, and [Quow](http://www.quow.co.uk/).
+I make use of map images by [Kefka](https://dw.daftjunk.com/) , Airk, and [Quow](http://www.quow.co.uk/). Some edits by me E.g. nicer fonts and keeping road colours consistant.
 I also use Quows SQL database to initially load in information about rooms and information about the map png's.
 
 Also credit to Oki as I'm using [Oki's TinTin++ Mud Client scripts](https://fossil.tubul.net/tt_dw/doc/trunk/README.md).
